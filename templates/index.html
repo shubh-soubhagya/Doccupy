@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doccupy - Chat with your PDF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <h1><i class="fas fa-file-alt"></i> Doccupy</h1>
+            </div>
+            <div class="upload-container">
+                <h3>Upload your PDF</h3>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="file-input-container">
+                        <input type="file" id="pdf-file" name="pdf_file" accept=".pdf" class="file-input">
+                        <label for="pdf-file" class="file-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span id="file-name">Choose a PDF file</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="upload-btn">
+                        <i class="fas fa-upload"></i> Upload & Process
+                    </button>
+                </form>
+                <div id="upload-status"></div>
+            </div>
+            <div class="info-container">
+                <h3>About Doccupy</h3>
+                <p>Doccupy helps you extract information from your PDF documents using advanced AI technology. Upload a PDF and start asking questions about its content.</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2><i class="fas fa-comments"></i> Chat with your Document</h2>
+                </div>
+                <div class="messages-container" id="messages">
+                    <div class="message system-message">
+                        <div class="message-content">
+                            <p>Welcome to Doccupy! Upload a PDF document to start chatting about its contents.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <form id="chat-form">
+                        <input type="text" id="user-input" placeholder="Ask a question about your document..." disabled>
+                        <button type="submit" id="send-btn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
