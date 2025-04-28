@@ -34,11 +34,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show loading status
         showUploadStatus('Uploading and processing your PDF...', 'loading');
         
+        // Add proper headers and error handling
         fetch('/upload', {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            },
+            // Add these options to handle CORS and timeouts
+            mode: 'cors',
+            credentials: 'same-origin',
+            timeout: 30000 // 30 seconds timeout
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.status === 'success') {
                 showUploadStatus(data.message, 'success');
@@ -49,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
+            console.error('Upload error:', error);
             showUploadStatus('Error: ' + error.message, 'error');
         });
     });
@@ -67,15 +81,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show typing indicator
         const typingIndicator = addTypingIndicator();
         
-        // Send message to backend
+        // Send message to backend with proper headers and error handling
         fetch('/ask', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({ query: userMessage })
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             // Remove typing indicator
             typingIndicator.remove();
@@ -89,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             // Remove typing indicator
             typingIndicator.remove();
+            console.error('Chat error:', error);
             addBotMessage('Error: Failed to get a response. Please try again.');
         });
     });
