@@ -387,3 +387,63 @@ body {
         max-width: 90%;
     }
 }
+
+/* Add these styles to fix the scrollbar issue */
+
+/* Make sure the messages container properly takes up available space */
+.messages-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 0; /* This forces the container to respect the flex layout */
+    min-height: 0; /* This is needed for Firefox */
+}
+
+/* Ensure consistent scrollbar styling across browsers */
+.messages-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Make sure parent containers have proper height settings */
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden; /* Prevent scrollbar from extending beyond container */
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%; /* Ensure it takes full height */
+}
+
+/* Ensure app container takes full viewport height */
+.app-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
