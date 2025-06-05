@@ -17,7 +17,7 @@ logging.getLogger("langchain").setLevel(logging.ERROR)  # Suppress unnecessary l
 groq_api_key = os.getenv('GROQ_API_KEY')
 
 # === Step 1: Load a specific PDF file ===
-pdf_path = "vul_scanner.pdf"  # change this to your specific file
+pdf_path = input("📄 Enter the full path of the PDF document: ")
 loader = PyPDFLoader(pdf_path)
 docs = loader.load()
 print(f"✅ Loaded {len(docs)} document chunks successfully.")
@@ -31,14 +31,14 @@ print(f"✅ Split into {len(documents)} chunks.")
 embeddings_model = HuggingFaceEmbeddings(model_name=r"C:\Users\hp\Desktop\ps_sol\models\all-MiniLM-L6-v2")
 
 # === Step 4: Check if FAISS DB exists ===
-faiss_path = "faiss_index"
-if os.path.exists(faiss_path):
-    vectordb = FAISS.load_local(faiss_path, embeddings_model, allow_dangerous_deserialization=True)
-    print("✅ Loaded FAISS DB from local storage.")
-else:
-    vectordb = FAISS.from_documents(documents, embeddings_model)
-    vectordb.save_local(faiss_path)
-    print("✅ Created and saved FAISS DB.")
+faiss_path = r"faiss_index"
+# if os.path.exists(faiss_path):
+#     vectordb = FAISS.load_local(faiss_path, embeddings_model, allow_dangerous_deserialization=True)
+#     print("✅ Loaded FAISS DB from local storage.")
+# else:
+vectordb = FAISS.from_documents(documents, embeddings_model)
+vectordb.save_local(faiss_path)
+print("✅ Created and saved FAISS DB.")
 
 retriever = vectordb.as_retriever()
 pdf_tool = create_retriever_tool(retriever, "pdf_search", "Search for PDF information only!")
