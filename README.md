@@ -1,7 +1,6 @@
 # DOCCUPY - Your personal Document Chatbot!
 
-**Doccupy** is an advanced **RAG (Retrieval-Augmented Generation) chatbot** that allows you to **chat with your documents instantly**.  
-By combining the power of **Large Language Models (LLMs)**, **LangChain**, and **Vector Databases**, Doccupy extracts the most relevant context from your files and provides **clear, structured, and Markdown-formatted responses** for effortless understanding.
+**Doccupy** is an advanced **RAG (Retrieval-Augmented Generation) chatbot** that allows you to **chat with your documents instantly**. By combining the power of **Large Language Models (LLMs)**, **LangChain**, and **Vector Databases**, Doccupy extracts the most relevant context from your files and provides **clear, structured, and Markdown-formatted responses** for effortless understanding.
 
 Whether you are a **researcher, business professional, or developer**, Doccupy helps you **save time, boost productivity, and make your documents interactive**. Simply **upload any document**, and within seconds, you have your **own AI-powered assistant** ready to answer queries.
 
@@ -40,16 +39,16 @@ Follow these steps to set up and run **Doccupy** on your system:
 
 ### 1️⃣ Install Python Requirements
 Ensure Python 3.8+ is installed, then install dependencies from `requirements.txt`:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
 ### 2️⃣ Install Ollama and Pull Gemma2:2b Model
 - Download and install Ollama from the official website: [Ollama](https://ollama.com/download)
 - Pull the Gemma2:2b model:
-   ```bash
-   ollama pull gemma2:2b
-   ```
+```bash
+ollama pull gemma2:2b
+```
 
 ### 3️⃣ Install Embedding Model – all-MiniLM-L6-v2
 - Download the all-MiniLM-L6-v2 model from Hugging Face: [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
@@ -58,15 +57,15 @@ Ensure Python 3.8+ is installed, then install dependencies from `requirements.tx
 4️⃣ Run Doccupy
 You can run Doccupy in two modes:
 
-   🌐 Web Interface (Ollama Gemma2 Model):
-      ```bash
-         python web.py
-      ```
+🌐 Web Interface (Ollama Gemma2 Model):
+```bash
+python web.py
+```
    
-   💻 Command-Line Interface (Groq API)
-      ```bash
-         python doccupy.py
-      ```
+💻 Command-Line Interface (Groq API)
+```bash
+python doccupy.py
+```
 
 ---
 
