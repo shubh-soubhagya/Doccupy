@@ -31,3 +31,54 @@ Whether you are a **researcher, business professional, or developer**, Doccupy h
    - Lightweight for **developers and automation scripts**.
      
 **Doccupy transforms static files into dynamic knowledge companions**, helping you understand and utilize your documents faster than ever before.
+
+---
+
+# ⚡ How to Run Doccupy
+
+Follow these steps to set up and run **Doccupy** on your system:
+
+### 1️⃣ Install Python Requirements
+Ensure Python 3.8+ is installed, then install dependencies from `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### 2️⃣ Install Ollama and Pull Gemma2:2b Model
+- Download and install Ollama from the official website: [Ollama](https://ollama.com/download)
+- Pull the Gemma2:2b model:
+   ```bash
+   ollama pull gemma2:2b
+   ```
+
+### 3️⃣ Install Embedding Model – all-MiniLM-L6-v2
+- Download the all-MiniLM-L6-v2 model from Hugging Face: [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+- Save or move the model into the `model/` directory in your project.
+
+4️⃣ Run Doccupy
+You can run Doccupy in two modes:
+
+   🌐 Web Interface (Ollama Gemma2 Model):
+      ```bash
+         python web.py
+      ```
+   
+   💻 Command-Line Interface (Groq API)
+      ```bash
+         python doccupy.py
+      ```
+
+---
+
+## 🤝 Contribution
+Contributions are welcomed to make Doccupy smarter and more reliable. Whether it’s fixing bugs, optimizing the RAG pipeline, enhancing the web or CLI interface, or improving documentation, every effort counts. To contribute, fork the repository, create a feature branch, commit your changes, and submit a pull request with a clear explanation. Please ensure your code is clean, well-documented, and that new dependencies are added to requirements.txt. Together, we can make Doccupy a more efficient and user-friendly document chatbot.
+
+## 📜 License
+Doccupy is licensed under the MIT License, allowing free use, modification, and distribution for personal and commercial purposes. Users must retain the original license and attribution in all copies or derivatives. See the LICENSE file for complete details.
+
+## 📧 Contact
+
+For questions, suggestions, or collaboration opportunities, feel free to reach out:   
+📩 Email: soubhagyasrivastava240@gmail.com 
+🌐 LinkedIn: [Soubhagya Srivastava](https://www.linkedin.com/in/soubhagya-srivastava-611408267/)  
+We’d love to hear your feedback and ideas to make **Doccupy** even better!
